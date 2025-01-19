@@ -1,5 +1,6 @@
 package ru.job4j.ood.srp.report;
 
+import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.srp.model.Employee;
 import ru.job4j.ood.srp.store.MemoryStore;
@@ -11,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ReportHRTest {
     @Test
-    void whenGenerated() {
+    void whenGenerated() throws JAXBException {
         Calendar now = Calendar.getInstance();
         Store store = new MemoryStore();
         Employee worker1 = new Employee("Ivan", now, now, 100);

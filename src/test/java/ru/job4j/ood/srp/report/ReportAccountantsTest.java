@@ -1,5 +1,6 @@
 package ru.job4j.ood.srp.report;
 
+import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.srp.currency.Currency;
 import ru.job4j.ood.srp.currency.InMemoryCurrencyConverter;
@@ -15,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ReportAccountantsTest {
     @Test
-    void whenGenerated() {
+    void whenGenerated() throws JAXBException {
         InMemoryCurrencyConverter converter = new InMemoryCurrencyConverter();
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         Calendar now = Calendar.getInstance();
