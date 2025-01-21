@@ -44,5 +44,4 @@ class ReportXMLTest {
                 """;
         assertThat(report.generate(em -> true)).isEqualTo(expect);
     }
-
 }
