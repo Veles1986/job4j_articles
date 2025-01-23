@@ -2,7 +2,6 @@ package ru.job4j.solid.lsp.foodstore;
 
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ControlQualityTest {
 
     @Test
-    void whenRedistributeToWarehouse() throws ParseException {
+    void whenRedistributeToWarehouse() {
         Warehouse warehouse = new Warehouse(new ArrayList<>());
         Shop shop = new Shop(new ArrayList<>());
         Trash trash = new Trash(new ArrayList<>());
@@ -26,7 +25,7 @@ class ControlQualityTest {
     }
 
     @Test
-    void whenRedistributeToShopWithDiscount() throws ParseException {
+    void whenRedistributeToShopWithDiscount() {
         Warehouse warehouse = new Warehouse(new ArrayList<>());
         Shop shop = new Shop(new ArrayList<>());
         Trash trash = new Trash(new ArrayList<>());
@@ -36,11 +35,11 @@ class ControlQualityTest {
         control.redistribute(food);
 
         assertThat(shop.getStock()).contains(food);
-        assertThat(food.getPrice()).isEqualTo(80.0f); // Цена с учетом скидки.
+        assertThat(food.getPrice()).isEqualTo(80.0f);
     }
 
     @Test
-    void whenRedistributeToTrash() throws ParseException {
+    void whenRedistributeToTrash() {
         Warehouse warehouse = new Warehouse(new ArrayList<>());
         Shop shop = new Shop(new ArrayList<>());
         Trash trash = new Trash(new ArrayList<>());
@@ -53,7 +52,7 @@ class ControlQualityTest {
     }
 
     @Test
-    void whenResort() throws ParseException {
+    void whenResort() {
         Warehouse warehouse = new Warehouse(new ArrayList<>());
         Shop shop = new Shop(new ArrayList<>());
         Trash trash = new Trash(new ArrayList<>());
