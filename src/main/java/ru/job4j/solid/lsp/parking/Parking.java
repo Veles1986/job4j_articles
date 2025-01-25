@@ -7,6 +7,9 @@ public class Parking {
     private int factNumberOfTrucks;
 
     public Parking(int maxNumberOfCars, int maxNumberOfTrucks) {
+        if (maxNumberOfCars <= 0 || maxNumberOfTrucks <= 0) {
+            throw new IllegalArgumentException("Illegal number of vehicles. It must be greater than zero.");
+        }
         this.maxNumberOfCars = maxNumberOfCars;
         this.maxNumberOfTrucks = maxNumberOfTrucks;
     }
@@ -23,11 +26,24 @@ public class Parking {
         return factNumberOfCars;
     }
 
-    public void addCar() {
+    public boolean addCar() {
         factNumberOfCars++;
         if (!checkCar()) {
             factNumberOfCars--;
             System.out.println("No more places for cars");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean deleteCar() {
+        if (factNumberOfCars < 0) {
+            System.out.println("There are no cars in the parking lot...¯\\_(ツ)_/¯");
+            return false;
+        } else {
+            factNumberOfCars--;
+            System.out.println("Successfully!!!");
+            return true;
         }
     }
 
@@ -35,11 +51,20 @@ public class Parking {
         return factNumberOfTrucks;
     }
 
-    public void addTruck() {
-        factNumberOfTrucks++;
-        if (!checkTruck()) {
-            factNumberOfTrucks--;
+    public void addTruck(int size) {
+        factNumberOfTrucks += size;
+        if (!checkTruck() || !checkTruckInPlaceOfCar()) {
+            factNumberOfTrucks -= size;
             System.out.println("No more places for trucks");
+        }
+    }
+
+    public void deleteTruck(int size) {
+        if (factNumberOfTrucks < size) {
+            System.out.println("There are no trucks in the parking lot...¯\\_(ツ)_/¯");
+        } else {
+            factNumberOfTrucks -= size;
+            System.out.println("Successfully!!!");
         }
     }
 
@@ -48,6 +73,10 @@ public class Parking {
     }
 
     public boolean checkTruck() {
+        return false;
+    }
+
+    public boolean checkTruckInPlaceOfCar() {
         return false;
     }
 }
