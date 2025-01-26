@@ -6,27 +6,29 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class ParkingServiceTest {
+class CarParkingServiceTest {
     @Test
     void whenAddAndDeleteCarAndTruckThenTrue() {
-        Parking parking = new Parking(10, 12);
-        ParkingService service = new ParkingService(parking);
+        Parking carParking = new CarParking(10);
+        Parking truckParking = new TruckParking(12);
+        ParkingService service = new ParkingService(List.of(carParking, truckParking));
         Vehicle car1 = new Car();
         Vehicle car2 = new Car();
         Vehicle truck1 = new Truck(3);
         Vehicle truck2 = new Truck(4);
         Vehicle truck3 = new Truck(2);
         assertThat(service.park(List.of(car1, car2, truck1, truck2, truck3))).isTrue();
-        assertThat(service.emptyCarPlaces()).isEqualTo(8);
-        assertThat(service.emptyTruckPlaces()).isEqualTo(3);
+        assertThat(service.emptyPlaces("car")).isEqualTo(8);
+        assertThat(service.emptyPlaces("truck")).isEqualTo(3);
         assertThat(service.delete(List.of(car1, truck2, truck3))).isTrue();
-        assertThat(service.getAllVehicles()).contains((Vehicle) List.of(car2, truck1));
+        assertThat(service.getAllVehicles()).contains(car2, truck1);
     }
 
     @Test
     void whenAddAndDeleteCarAndTruckThenFalse() {
-        Parking parking = new Parking(10, 12);
-        ParkingService service = new ParkingService(parking);
+        Parking carParking = new CarParking(10);
+        Parking truckParking = new TruckParking(12);
+        ParkingService service = new ParkingService(List.of(carParking, truckParking));
         Vehicle car1 = new Car();
         Vehicle car2 = new Car();
         Vehicle car3 = new Car();
@@ -47,8 +49,8 @@ class ParkingServiceTest {
                 car11,
                 truck1, truck2, truck3,
                 truck4))).isFalse();
-        assertThat(service.getAllVehicles()).doesNotContain((Vehicle) List.of(car11, truck4));
-        assertThat(service.emptyCarPlaces()).isEqualTo(0);
-        assertThat(service.emptyTruckPlaces()).isEqualTo(3);
+        assertThat(service.emptyPlaces("car")).isEqualTo(0);
+        assertThat(service.emptyPlaces("truck")).isEqualTo(3);
+        assertThat(service.getAllVehicles()).doesNotContain(car11, truck4);
     }
 }
