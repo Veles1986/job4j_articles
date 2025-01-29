@@ -27,7 +27,7 @@ public class ControlQuality {
         List<Food> allFoods = stores.stream()
                 .flatMap(store -> store.getStock().stream())
                 .toList();
-        stores.forEach(store -> store.deleteAll(allFoods));
+        stores.forEach(st -> st.deleteAll(allFoods));
         redistributeAll(allFoods);
     }
 }
