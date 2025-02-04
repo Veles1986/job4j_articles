@@ -8,7 +8,7 @@ public class LongestUniqueSubstring {
         HashSet<Character> charSet = new HashSet<>();
         char[] strToChar = str.toCharArray();
         int i, j = 0;
-        for (i = 0; i < strToChar.length;i++) {
+        for (i = 0; i < strToChar.length; i++) {
             if (!charSet.add(strToChar[i])) {
                 if (result.length() < charSet.size()) {
                     result = str.substring(j, i);
