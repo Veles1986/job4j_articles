@@ -9,7 +9,7 @@ public class QuickList {
         quickSort(sequence, 0, sequence.size() - 1, comparator);
     }
 
-    private static <T> void quickSort(List<T> sequence, int start, int end, Comparator<T> comparator ) {
+    private static <T> void quickSort(List<T> sequence, int start, int end, Comparator<T> comparator) {
         if (start >= end) {
             return;
         }
