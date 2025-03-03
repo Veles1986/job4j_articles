@@ -46,7 +46,6 @@ public class Main {
         intervals.add(new Interval(1, 4));
         intervals.add(new Interval(2, 6));
         intervals.add(new Interval(3, 5));
-        intervals.add(new Interval(7, 8));
 
         int[] result = findMaxOverlapInterval(intervals);
 
