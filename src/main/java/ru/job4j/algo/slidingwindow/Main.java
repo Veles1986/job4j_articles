@@ -8,9 +8,13 @@ public class Main {
         if (intervals.isEmpty()) {
             return new int[] {-1, -1};
         }
+
         intervals.sort(Comparator.comparingInt(Interval::getStart));
+
         var activeIntervals = new PriorityQueue<>(Comparator.comparingInt(Interval::getEnd));
+
         int maxOverLap = 0;
+
         int maxStart = -1;
         int maxEnd = -1;
         for (int i = 0; i < intervals.size(); i++) {
